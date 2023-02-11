@@ -1,0 +1,17 @@
+{
+	"chat_id": "{{incoming_request_1.dialog_id}}",
+	"dialog": {
+		"messages": [
+			{
+				"text": "{{incoming_request_1.text}}"
+			}
+		]
+	},
+	"features": [
+		{
+			"key": "{{incoming_request_1.transport}}",
+			"value": "{{incoming_request_1.hook_type}}",
+			"channel_id": "{{incoming_request_1.channel_id}}"
+		}
+	]
+}
