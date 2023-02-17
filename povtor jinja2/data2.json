@@ -1,0 +1,31 @@
+{
+	"chat_id": "{{incoming_request_1.dialog_id}}", 
+	"dialog": {"messages":
+		[
+			{%- for i in incoming_request_1.texts %}
+			{%- if loop.last %} 
+			{"text": "{{i}}"}
+			{%- else %}
+			{"text": "{{i}}"},
+			{%- endif %}
+			{%- endfor %}
+		]
+	}, 
+	"features":[
+		{%- for i, q in incoming_request_1.client.items() %}
+		{%- if loop.last %}  
+		{%- if q is string %}
+		{"key": "{{i}}", "value": "{{q if q is not none else 'null'}}"}
+		{%- else %}
+		{"key": "{{i}}", "value": {{q if q is not none else 'null'}}}
+		{%- endif %}
+		{%- else %}
+		{%- if q is string %}
+		{"key": "{{i}}", "value": "{{q if q is not none else 'null'}}"},
+		{%- else %}
+		{"key": "{{i}}", "value": {{q if q is not none else 'null'}}},
+		{%- endif %}
+		{%- endif %}
+		{%- endfor %}
+	]
+}
